@@ -14,15 +14,15 @@ public class BestFitTest {
 
 	        Scanner sc = new Scanner(System.in);
 
-	        // Three min-heaps for SMALL, MEDIUM, LARGE lockers
+	        // Create three min-heaps each for SMALL, MEDIUM, LARGE lockers
 	        PriorityQueue<Integer>[] available = new PriorityQueue[3];
 	        for (int i = 0; i < 3; i++) {
 	            available[i] = new PriorityQueue<>();
 	        }
 
-	        // ----------------------------
-	        // STEP 1: INPUT LOCKERS
-	        // ----------------------------
+	        // ---------------------------------------
+	        // Giving The input for number of lockers
+	        // ---------------------------------------
 	        System.out.print("Enter number of lockers: ");
 	        int N = sc.nextInt();
 
@@ -36,9 +36,9 @@ public class BestFitTest {
 	            available[size.ordinal()].add(lockerId);
 	        }
 
-	        // ----------------------------
-	        // STEP 2: INPUT PACKAGES
-	        // ----------------------------
+	        // ---------------------------------------
+	        // Giving The input for number of lockers
+	        // ---------------------------------------
 	        System.out.print("Enter number of packages: ");
 	        int M = sc.nextInt();
 
@@ -52,7 +52,6 @@ public class BestFitTest {
 
 	            boolean assigned = false;
 
-	            // Try SMALL→MEDIUM→LARGE based on package size
 	            for (int s = pkgSize.ordinal(); s < 3; s++) {
 	                if (!available[s].isEmpty()) {
 	                    int assignedLocker = available[s].poll();
@@ -70,9 +69,10 @@ public class BestFitTest {
 	        sc.close();
 	    }
 
-	    // ----------------------------
-	    // HELPER: Convert string → enum
-	    // ----------------------------
+/**
+ * Converting String -> enum
+ * @param size
+ */
 	    private static Size parseSize(String size) {
 	        switch (size) {
 	            case "SMALL": return Size.SMALL;
